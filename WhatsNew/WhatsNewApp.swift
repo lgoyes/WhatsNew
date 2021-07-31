@@ -13,10 +13,8 @@ struct WhatsNewApp: App {
 
     var body: some Scene {
         WindowGroup {
-            let viewModel = MainContentViewModel()
-            MainContentView(viewModel: viewModel)
+            MainContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(viewModel.state)
         }
     }
 }

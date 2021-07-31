@@ -9,13 +9,17 @@ import Foundation
 
 protocol AllPostsViewModelProtocol: AnyObject {
     func onRefreshButtonTapped()
+    func onDeleteAllButtonTapped()
     func onViewAppeared()
 }
 
 class AllPostsViewModel {
     var state: AllPostsState
     
-    init(state: AllPostsState = AllPostsState(posts: [])) {
+    init(state: AllPostsState = AllPostsState(
+            segmentControlOptions: SegmentControlOption.allCases,
+            selectedOption: SegmentControlOption.all,
+            posts: [])) {
         self.state = state
     }
 }
@@ -27,5 +31,9 @@ extension AllPostsViewModel: AllPostsViewModelProtocol {
     
     func onViewAppeared() {
         
+    }
+    
+    func onDeleteAllButtonTapped() {
+        print("On delete selected")
     }
 }
