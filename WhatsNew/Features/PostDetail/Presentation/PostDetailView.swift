@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct PostDetailView: View {
+    var postId: Int
+    var userId: Int
+    
     var body: some View {
         Text("Hello, World!")
+            .onAppear() {
+                
+            }
     }
 }
 
 struct PostDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PostDetailView()
+        PostDetailView(postId: 5, userId: 5)
     }
 }

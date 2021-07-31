@@ -10,6 +10,11 @@ import CoreData
 
 struct MainContentView: View {
     @EnvironmentObject var state: MainContentState
+    private var viewModel: MainContentViewModelProtocol?
+    
+    init(viewModel: MainContentViewModelProtocol?) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         NavigationView {
@@ -19,17 +24,26 @@ struct MainContentView: View {
                     options: state.segmentControlOptions)
                 
                 if state.selectedOption == .all {
-                    AllPostsView()
+                    let viewModel = AllPostsViewModel()
+                    AllPostsView(viewModel: viewModel)
+                        .environmentObject(viewModel.state)
                 } else {
                     FavoritesView()
                 }
                 Spacer()
+                Button(NSLocalizedString(LocalizedKey.Main.deleteAll, comment: "")) {
+                    viewModel?.onDeleteAllButtonTapped()
+                }
+                .foregroundColor(.white)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .center)
+                .background(Color.red)
             }
-            .navigationBarTitle("Posts", displayMode: .inline)
+            .navigationBarTitle(NSLocalizedString(LocalizedKey.Main.posts, comment: ""), displayMode: .inline)
             .toolbar(content: {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                     Button(action: {
-                        print("Help tapped!")
+                        viewModel?.onRefreshButtonTapped()
                     }) {
                         Image(systemName: "gobackward")
                     }
@@ -44,7 +58,7 @@ struct MainContentView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = MainContentViewModel()
         
-        MainContentView()
+        MainContentView(viewModel: viewModel)
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
             .environmentObject(viewModel.state)
     }

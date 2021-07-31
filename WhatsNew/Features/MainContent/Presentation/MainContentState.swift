@@ -1,5 +1,5 @@
 //
-//  ContentViewModel.swift
+//  MainContentState.swift
 //  WhatsNew
 //
 //  Created by Luis Goyes Garces on 30/07/21.
@@ -7,9 +7,17 @@
 
 import Foundation
 
-enum SegmentControlOption: String, CaseIterable {
-    case all = "All"
-    case favorites = "Favorites"
+enum SegmentControlOption: CaseIterable {
+    case all
+    case favorites
+    func getLocalizedStringKey() -> String {
+        switch self {
+        case .all:
+            return LocalizedKey.Main.SegmentControl.all
+        case .favorites:
+            return LocalizedKey.Main.SegmentControl.favorites
+        }
+    }
 }
 
 class MainContentState: ObservableObject {
@@ -19,15 +27,4 @@ class MainContentState: ObservableObject {
         self.segmentControlOptions = segmentControlOptions
         self.selectedOption = selectedOption
     }
-}
-
-class MainContentViewModel {
-    var state: MainContentState
-    
-    init() {
-        self.state = MainContentState(
-            segmentControlOptions: SegmentControlOption.allCases,
-            selectedOption: SegmentControlOption.all)
-    }
-    
 }

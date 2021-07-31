@@ -13,7 +13,7 @@ struct BindingSegmentedControl: View {
     var body: some View {
         Picker("", selection: $selectedOption) {
             ForEach(options, id: \.self) {
-                Text($0.rawValue)
+                Text(NSLocalizedString($0.getLocalizedStringKey(), comment: ""))
             }
         }
         .pickerStyle(SegmentedPickerStyle())

@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  WhatsNew
+
+  Created by Luis Goyes Garces on 30/07/21.
+  
+*/
+"main.segmentcontroloption.all" = "All";
+"main.segmentcontroloption.favorites" = "Favorites";
+"main.posts" = "Posts";
+"main.deleteall" = "Delete all";
+"detail.post" = "Post";
+"detail.description" = "Description";
+"detail.user" = "User";
+"detail.comments" = "Comments";
