@@ -10,9 +10,9 @@ import CoreData
 
 struct MainContentView: View {
     var body: some View {        
-        let viewModel = AllPostsViewModel()
-        AllPostsView(viewModel: viewModel)
-            .environmentObject(viewModel.state)
+        let entity = AllPostsEntity()
+        AllPostsView(entity: entity)
+            .environmentObject(entity.state)
     }
 }
 

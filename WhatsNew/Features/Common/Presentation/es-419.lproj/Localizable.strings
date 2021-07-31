@@ -8,6 +8,7 @@
 "main.segmentcontroloption.all" = "Todos";
 "main.segmentcontroloption.favorites" = "Favoritos";
 "main.posts" = "Publicaciones";
+"main.emptyposts" = "¡No hay publicaciones por acá!";
 "main.deleteall" = "Borrar todas";
 "detail.post" = "Publicación";
 "detail.description" = "Descripción";

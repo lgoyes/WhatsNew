@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		0C5859F126B4FCFF005EEA47 /* AllPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5859F026B4FCFF005EEA47 /* AllPostsView.swift */; };
 		0C5859FA26B4FD23005EEA47 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5859F926B4FD23005EEA47 /* PostDetailView.swift */; };
+		0C839D5326B57A2900D643F9 /* FetchNewPostsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D5226B57A2900D643F9 /* FetchNewPostsInteractor.swift */; };
+		0C839D5926B57A6D00D643F9 /* ProdAPIPostsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D5826B57A6D00D643F9 /* ProdAPIPostsRepository.swift */; };
+		0C839D5E26B57A7B00D643F9 /* DevAPIPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D5D26B57A7B00D643F9 /* DevAPIPostRepository.swift */; };
+		0C839D6326B57A8D00D643F9 /* ProdDBPostsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D6226B57A8D00D643F9 /* ProdDBPostsRepository.swift */; };
+		0C839D6826B57A9900D643F9 /* DevDBPostsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D6726B57A9900D643F9 /* DevDBPostsRepository.swift */; };
+		0C839D6D26B57AE600D643F9 /* APIPostsRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D6C26B57AE600D643F9 /* APIPostsRepositoryType.swift */; };
+		0C839D7226B57AF100D643F9 /* DBPostsRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D7126B57AF100D643F9 /* DBPostsRepositoryType.swift */; };
 		0C9D558C26B4F74900341E38 /* WhatsNewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D558B26B4F74900341E38 /* WhatsNewApp.swift */; };
 		0C9D558E26B4F74900341E38 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D558D26B4F74900341E38 /* MainContentView.swift */; };
 		0C9D559026B4F74A00341E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9D558F26B4F74A00341E38 /* Assets.xcassets */; };
@@ -20,7 +27,7 @@
 		0CD604CB26B501A00056C0CE /* BindingSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD604CA26B501A00056C0CE /* BindingSegmentedControl.swift */; };
 		0CD604DF26B50CAA0056C0CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0CD604E126B50CAA0056C0CE /* Localizable.strings */; };
 		0CD604EA26B50CF40056C0CE /* LocalizedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD604E926B50CF40056C0CE /* LocalizedKey.swift */; };
-		0CD604FA26B513110056C0CE /* AllPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD604F926B513110056C0CE /* AllPostsViewModel.swift */; };
+		0CD604FA26B513110056C0CE /* AllPostsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD604F926B513110056C0CE /* AllPostsEntity.swift */; };
 		0CD604FF26B5131D0056C0CE /* AllPostsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD604FE26B5131D0056C0CE /* AllPostsState.swift */; };
 		0CDD991A26B51EDA00362E5F /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDD991926B51EDA00362E5F /* PostList.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +52,13 @@
 /* Begin PBXFileReference section */
 		0C5859F026B4FCFF005EEA47 /* AllPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostsView.swift; sourceTree = "<group>"; };
 		0C5859F926B4FD23005EEA47 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		0C839D5226B57A2900D643F9 /* FetchNewPostsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNewPostsInteractor.swift; sourceTree = "<group>"; };
+		0C839D5826B57A6D00D643F9 /* ProdAPIPostsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdAPIPostsRepository.swift; sourceTree = "<group>"; };
+		0C839D5D26B57A7B00D643F9 /* DevAPIPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevAPIPostRepository.swift; sourceTree = "<group>"; };
+		0C839D6226B57A8D00D643F9 /* ProdDBPostsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdDBPostsRepository.swift; sourceTree = "<group>"; };
+		0C839D6726B57A9900D643F9 /* DevDBPostsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevDBPostsRepository.swift; sourceTree = "<group>"; };
+		0C839D6C26B57AE600D643F9 /* APIPostsRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPostsRepositoryType.swift; sourceTree = "<group>"; };
+		0C839D7126B57AF100D643F9 /* DBPostsRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBPostsRepositoryType.swift; sourceTree = "<group>"; };
 		0C9D558826B4F74900341E38 /* WhatsNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9D558B26B4F74900341E38 /* WhatsNewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewApp.swift; sourceTree = "<group>"; };
 		0C9D558D26B4F74900341E38 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
@@ -63,7 +77,7 @@
 		0CD604E026B50CAA0056C0CE /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0CD604E526B50CB10056C0CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0CD604E926B50CF40056C0CE /* LocalizedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedKey.swift; sourceTree = "<group>"; };
-		0CD604F926B513110056C0CE /* AllPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostsViewModel.swift; sourceTree = "<group>"; };
+		0CD604F926B513110056C0CE /* AllPostsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostsEntity.swift; sourceTree = "<group>"; };
 		0CD604FE26B5131D0056C0CE /* AllPostsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostsState.swift; sourceTree = "<group>"; };
 		0CDD991926B51EDA00362E5F /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +137,8 @@
 		0C5859E426B4FCB9005EEA47 /* AllPosts */ = {
 			isa = PBXGroup;
 			children = (
+				0C839D5726B57A3300D643F9 /* Data */,
+				0C839D5126B57A0300D643F9 /* Domain */,
 				0C5859EF26B4FCF0005EEA47 /* Presentation */,
 			);
 			path = AllPosts;
@@ -131,9 +147,10 @@
 		0C5859EF26B4FCF0005EEA47 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0CD604CA26B501A00056C0CE /* BindingSegmentedControl.swift */,
 				0CDD991926B51EDA00362E5F /* PostList.swift */,
 				0C5859F026B4FCFF005EEA47 /* AllPostsView.swift */,
-				0CD604F926B513110056C0CE /* AllPostsViewModel.swift */,
+				0CD604F926B513110056C0CE /* AllPostsEntity.swift */,
 				0CD604FE26B5131D0056C0CE /* AllPostsState.swift */,
 			);
 			path = Presentation;
@@ -145,6 +162,27 @@
 				0C5859F926B4FD23005EEA47 /* PostDetailView.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0C839D5126B57A0300D643F9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0C839D5226B57A2900D643F9 /* FetchNewPostsInteractor.swift */,
+				0C839D6C26B57AE600D643F9 /* APIPostsRepositoryType.swift */,
+				0C839D7126B57AF100D643F9 /* DBPostsRepositoryType.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		0C839D5726B57A3300D643F9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0C839D5826B57A6D00D643F9 /* ProdAPIPostsRepository.swift */,
+				0C839D5D26B57A7B00D643F9 /* DevAPIPostRepository.swift */,
+				0C839D6226B57A8D00D643F9 /* ProdDBPostsRepository.swift */,
+				0C839D6726B57A9900D643F9 /* DevDBPostsRepository.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		0C9D557F26B4F74900341E38 = {
@@ -218,7 +256,6 @@
 		0CD604C926B501940056C0CE /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				0CD604CA26B501A00056C0CE /* BindingSegmentedControl.swift */,
 				0CD604E126B50CAA0056C0CE /* Localizable.strings */,
 				0CD604E926B50CF40056C0CE /* LocalizedKey.swift */,
 			);
@@ -366,15 +403,22 @@
 			files = (
 				0C9D559526B4F74A00341E38 /* Persistence.swift in Sources */,
 				0C9D558E26B4F74900341E38 /* MainContentView.swift in Sources */,
-				0CD604FA26B513110056C0CE /* AllPostsViewModel.swift in Sources */,
+				0CD604FA26B513110056C0CE /* AllPostsEntity.swift in Sources */,
+				0C839D6826B57A9900D643F9 /* DevDBPostsRepository.swift in Sources */,
 				0C9D559826B4F74A00341E38 /* WhatsNew.xcdatamodeld in Sources */,
 				0C5859FA26B4FD23005EEA47 /* PostDetailView.swift in Sources */,
 				0C5859F126B4FCFF005EEA47 /* AllPostsView.swift in Sources */,
+				0C839D5E26B57A7B00D643F9 /* DevAPIPostRepository.swift in Sources */,
+				0C839D6D26B57AE600D643F9 /* APIPostsRepositoryType.swift in Sources */,
 				0C9D558C26B4F74900341E38 /* WhatsNewApp.swift in Sources */,
+				0C839D5326B57A2900D643F9 /* FetchNewPostsInteractor.swift in Sources */,
+				0C839D6326B57A8D00D643F9 /* ProdDBPostsRepository.swift in Sources */,
+				0C839D5926B57A6D00D643F9 /* ProdAPIPostsRepository.swift in Sources */,
 				0CD604CB26B501A00056C0CE /* BindingSegmentedControl.swift in Sources */,
 				0CD604EA26B50CF40056C0CE /* LocalizedKey.swift in Sources */,
 				0CD604FF26B5131D0056C0CE /* AllPostsState.swift in Sources */,
 				0CDD991A26B51EDA00362E5F /* PostList.swift in Sources */,
+				0C839D7226B57AF100D643F9 /* DBPostsRepositoryType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

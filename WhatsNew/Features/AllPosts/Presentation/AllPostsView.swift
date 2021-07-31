@@ -9,10 +9,10 @@ import SwiftUI
 
 struct AllPostsView: View {
     @EnvironmentObject var state: AllPostsState
-    private var viewModel: AllPostsViewModelProtocol?
+    private var entity: AllPostsEntityProtocol?
     
-    init(viewModel: AllPostsViewModelProtocol?) {
-        self.viewModel = viewModel
+    init(entity: AllPostsEntityProtocol?) {
+        self.entity = entity
     }
     
     var body: some View {
@@ -22,24 +22,25 @@ struct AllPostsView: View {
                     selectedOption: $state.selectedOption,
                     options: state.segmentControlOptions)
                 
-                PostList(posts: state.posts)
-                
-                Spacer()
+                let visiblePosts = state.selectedOption == .all ? state.posts : state.posts.filter({ $0.favorite }) 
+                PostList(posts: visiblePosts) { (post) in
+                    entity?.onRowSelected(post: post)
+                }
                 
                 Button(NSLocalizedString(LocalizedKey.Main.deleteAll, comment: "")) {
-                    viewModel?.onDeleteAllButtonTapped()
+                    entity?.onDeleteAllButtonTapped()
                 }
                 .foregroundColor(.white)
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .center)
                 .background(Color.red)
             }.onAppear() {
-                viewModel?.onViewAppeared()
+                entity?.onViewAppeared()
             }.navigationBarTitle(NSLocalizedString(LocalizedKey.Main.posts, comment: ""), displayMode: .inline)
             .toolbar(content: {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                     Button(action: {
-                        viewModel?.onRefreshButtonTapped()
+                        entity?.onRefreshButtonTapped()
                     }) {
                         Image(systemName: "gobackward")
                     }
@@ -67,8 +68,8 @@ struct AllPostsView_Previews: PreviewProvider {
                 Post(id: 10, description: "hola", visited: true, favorite: false),
                 Post(id: 11, description: "hola", visited: true, favorite: true),
             ])
-        let viewModel = AllPostsViewModel(state: state)
-        AllPostsView(viewModel: viewModel)
-            .environmentObject(viewModel.state)
+        let entity = AllPostsEntity(state: state)
+        AllPostsView(entity: entity)
+            .environmentObject(entity.state)
     }
 }

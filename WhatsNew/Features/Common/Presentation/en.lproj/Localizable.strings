@@ -8,6 +8,7 @@
 "main.segmentcontroloption.all" = "All";
 "main.segmentcontroloption.favorites" = "Favorites";
 "main.posts" = "Posts";
+"main.emptyposts" = "No posts over here!";
 "main.deleteall" = "Delete all";
 "detail.post" = "Post";
 "detail.description" = "Description";

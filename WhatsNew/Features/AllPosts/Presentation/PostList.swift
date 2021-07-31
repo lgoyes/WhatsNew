@@ -34,14 +34,24 @@ struct PostRow: View {
 
 struct PostList: View {
     var posts: [Post]
+    var onRowSelected: (Post) -> ()
     
     var body: some View {
-        List(posts) { post in
-            PostRow(
-                visited: post.visited,
-                favorite: post.favorite,
-                description: post.description,
-                postId: post.id)
+        if posts.count > 0 {
+            List(posts) { post in
+                PostRow(
+                    visited: post.visited,
+                    favorite: post.favorite,
+                    description: post.description,
+                    postId: post.id)
+                    .onTapGesture {
+                        onRowSelected(post)
+                    }
+            }
+        } else {
+            Spacer()
+            Text(NSLocalizedString(LocalizedKey.Main.emptyPosts, comment: ""))
         }
+        Spacer()
     }
 }
