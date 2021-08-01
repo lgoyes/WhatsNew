@@ -1,5 +1,5 @@
 //
-//  UpdateVisitedPostInteractor.swift
+//  SetVisitedPostInteractor.swift
 //  WhatsNew
 //
 //  Created by Luis Goyes Garces on 1/08/21.
@@ -7,22 +7,22 @@
 
 import Foundation
 
-enum UpdateVisitedPostError: Swift.Error {
+enum SetVisitedPostError: Swift.Error {
     case databaseError
     case missingParam
     case postNotFound
 }
 
-protocol UpdateVisitedPostInteractable {
+protocol SetVisitedPostInteractable {
     func setParams(postId: Int)
-    func set(callback: @escaping (Result<Post, UpdateVisitedPostError>)->())
+    func set(callback: @escaping (Result<Post, SetVisitedPostError>)->())
     func execute()
 }
 
-class UpdateVisitedPostInteractor: UpdateVisitedPostInteractable {
+class SetVisitedPostInteractor: SetVisitedPostInteractable {
     var dbRepository: DBPostsRepositoryType
     var postIdToBeUpdated: Int?
-    var callback: ((Result<Post, UpdateVisitedPostError>) -> ())?
+    var callback: ((Result<Post, SetVisitedPostError>) -> ())?
 
     init(
         dbRepository: DBPostsRepositoryType
@@ -34,7 +34,7 @@ class UpdateVisitedPostInteractor: UpdateVisitedPostInteractable {
         postIdToBeUpdated = postId
     }
     
-    func set(callback: @escaping (Result<Post, UpdateVisitedPostError>) -> ()) {
+    func set(callback: @escaping (Result<Post, SetVisitedPostError>) -> ()) {
         self.callback = callback
     }
     

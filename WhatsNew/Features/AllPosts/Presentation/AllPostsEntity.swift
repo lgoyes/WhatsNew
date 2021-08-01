@@ -21,7 +21,7 @@ class AllPostsEntity {
     var state: AllPostsState
     let fetchNewPostsInteractor: FetchNewPostsInteractable
     let clearCacheInteractor: ClearCacheInteractable
-    let updateVisitedPostInteractor: UpdateVisitedPostInteractable
+    let updateVisitedPostInteractor: SetVisitedPostInteractable
     
     init(state: AllPostsState = AllPostsState(
         segmentControlOptions: SegmentControlOption.allCases,
@@ -52,7 +52,7 @@ class AllPostsEntity {
             dbRepository: dbRepository)
         self.clearCacheInteractor = ClearCacheInteractor(
             dbRepository: dbRepository)
-        self.updateVisitedPostInteractor = UpdateVisitedPostInteractor(
+        self.updateVisitedPostInteractor = SetVisitedPostInteractor(
             dbRepository: dbRepository)
     }
     
