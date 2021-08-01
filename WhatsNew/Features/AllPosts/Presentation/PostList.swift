@@ -19,10 +19,10 @@ struct PostRow: View {
                 Image(systemName: "star.fill")
                     .foregroundColor(Color.yellow)
             } else if visited {
-                Image(systemName: "circle.fill")
+                Image(systemName: "circle")
                     .foregroundColor(Color.blue)
             } else {
-                Image(systemName: "circle")
+                Image(systemName: "circle.fill")
                     .foregroundColor(Color.blue)
             }
             Text(description)
@@ -38,7 +38,10 @@ struct PostList: View {
     
     var body: some View {
         if posts.count > 0 {
-            List(posts) { post in
+            List(posts.sorted(by: {
+                (!$0.visited && $1.visited) ||
+                    (((!$0.visited && !$1.visited) || ($0.visited && $1.visited)) && $0.fetchDate > $1.fetchDate)
+            })) { post in
                 PostRow(
                     visited: post.visited,
                     favorite: post.favorite,

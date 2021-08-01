@@ -17,7 +17,8 @@ class DevDBPostsRepository: DBPostsRepositoryType {
                     id: i,
                     description: "Cached Description \(i)",
                     visited: false,
-                    favorite: false)
+                    favorite: false,
+                    fetchDate: Date())
             )
         }
     }
@@ -27,13 +28,26 @@ class DevDBPostsRepository: DBPostsRepositoryType {
     }
     func storePostsWithoutOverride(items: [Post]) {
         items.forEach { (newPost) in
-            if posts.contains(where: { (oldPost) -> Bool in
+            if !posts.contains(where: { (oldPost) -> Bool in
                 oldPost.id == newPost.id
             }) {
-                // If the entry already exists, do not override
-            } else {
                 posts.append(newPost)
             }
+        }
+    }
+    func clearCache() {
+        posts = []
+    }
+    func getPostById(postId: Int, callback: @escaping (Post?) -> ()) {
+        let post = posts.first { $0.id == postId }
+        callback(post)
+    }
+    func updatePost(postId: Int, post: Post, callback: @escaping (Post?) -> ()) {
+        if let postIndex = posts.firstIndex(where: { $0.id == postId }) {
+            posts[postIndex] = post
+            callback(post)
+        } else {
+            callback(nil)
         }
     }
 }

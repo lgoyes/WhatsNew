@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AllPostsView: View {
-    @EnvironmentObject var state: AllPostsState
+    @EnvironmentObject private var state: AllPostsState
+    
     private var entity: AllPostsEntityProtocol?
     
     init(entity: AllPostsEntityProtocol?) {
@@ -19,6 +20,12 @@ struct AllPostsView: View {
         NavigationView {
             GeometryReader { geometry in
                 VStack {
+                    let destination = PostDetailView(onCloseDetailTapped: {
+                        entity?.onDetailViewBackPressed()
+                    }, post: state.postDetailSelected)
+                    NavigationLink(destination: destination, isActive: $state.detailVisible) {
+                        EmptyView()
+                    }
                     if !state.loadingRequest {
                         BindingSegmentedControl(
                             selectedOption: $state.selectedOption,
@@ -55,7 +62,8 @@ struct AllPostsView: View {
                         }
                         Spacer()
                     }
-                }.onAppear() {
+                }
+                .onAppear() {
                     entity?.onViewAppeared()
                 }.navigationBarTitle(NSLocalizedString(LocalizedKey.Main.posts, comment: ""), displayMode: .inline)
                 .toolbar(content: {
@@ -89,21 +97,23 @@ struct AllPostsView_Previews: PreviewProvider {
             segmentControlOptions: SegmentControlOption.allCases,
             selectedOption: SegmentControlOption.all,
             posts: [
-                Post(id: 1, description: "hola", visited: true, favorite: true),
-                Post(id: 2, description: "hola", visited: false, favorite: false),
-                Post(id: 3, description: "hola", visited: true, favorite: true),
-                Post(id: 4, description: "hola", visited: true, favorite: false),
-                Post(id: 5, description: "hola", visited: true, favorite: true),
-                Post(id: 6, description: "hola", visited: false, favorite: false),
-                Post(id: 7, description: "hola", visited: true, favorite: true),
-                Post(id: 8, description: "hola", visited: false, favorite: false),
-                Post(id: 9, description: "hola", visited: true, favorite: true),
-                Post(id: 10, description: "hola", visited: true, favorite: false),
-                Post(id: 11, description: "hola", visited: true, favorite: true),
+                Post(id: 1, description: "hola", visited: true, favorite: true, fetchDate: Date()),
+                Post(id: 2, description: "hola", visited: false, favorite: false, fetchDate: Date()),
+                Post(id: 3, description: "hola", visited: true, favorite: true, fetchDate: Date()),
+                Post(id: 4, description: "hola", visited: true, favorite: false, fetchDate: Date()),
+                Post(id: 5, description: "hola", visited: true, favorite: true, fetchDate: Date()),
+                Post(id: 6, description: "hola", visited: false, favorite: false, fetchDate: Date()),
+                Post(id: 7, description: "hola", visited: true, favorite: true, fetchDate: Date()),
+                Post(id: 8, description: "hola", visited: false, favorite: false, fetchDate: Date()),
+                Post(id: 9, description: "hola", visited: true, favorite: true, fetchDate: Date()),
+                Post(id: 10, description: "hola", visited: true, favorite: false, fetchDate: Date()),
+                Post(id: 11, description: "hola", visited: true, favorite: true, fetchDate: Date()),
             ],
             errorMessage: nil,
             presentingError: false,
-            loadingRequest: false
+            loadingRequest: false,
+            postDetailSelected: nil,
+            detailVisible: false
         )
         let entity = AllPostsEntity(state: state)
         AllPostsView(entity: entity)

@@ -8,15 +8,20 @@
 import Foundation
 
 class DevAPIPostRepository: APIPostsRepositoryType {
+    private struct Constant {
+        static let numberOfNewPosts = 20
+    }
+    
     func fetchEntries(_ callback: @escaping (Result<[Post], FetchNewPostsError>) -> ()) {
         var posts = [Post]()
-        for i in (0..<20) {
+        for i in (0..<30) {
             posts.append(
                 Post(
                     id: i,
                     description: "Description \(i)",
-                    visited: false,
-                    favorite: false)
+                    visited: i >= Constant.numberOfNewPosts,
+                    favorite: false,
+                    fetchDate: Date())
             )
         }
         callback(.success(posts))

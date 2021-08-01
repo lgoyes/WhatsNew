@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct PostDetailView: View {
-    var postId: Int
-    var userId: Int
+    let onCloseDetailTapped: () -> ()
+    var post: Post!
     
     var body: some View {
         Text("Hello, World!")
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: BackButton(label: NSLocalizedString(LocalizedKey.Main.back, comment: "")) {
+                self.onCloseDetailTapped()
+            })
             .onAppear() {
                 
-            }
+            }.navigationBarTitle(NSLocalizedString(LocalizedKey.Detail.post, comment: ""), displayMode: .inline)
     }
 }
 
 struct PostDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PostDetailView(postId: 5, userId: 5)
+        PostDetailView(onCloseDetailTapped: {}, post: nil)
     }
 }

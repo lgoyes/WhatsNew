@@ -25,6 +25,7 @@ struct Post: Identifiable {
     let description: String
     let visited: Bool
     let favorite: Bool
+    let fetchDate: Date
 }
 
 class AllPostsState: ObservableObject {
@@ -34,12 +35,16 @@ class AllPostsState: ObservableObject {
     @Published var errorMessage: String?
     @Published var presentingError: Bool
     @Published var loadingRequest: Bool
-    init(segmentControlOptions: [SegmentControlOption], selectedOption: SegmentControlOption, posts: [Post], errorMessage: String?, presentingError: Bool, loadingRequest: Bool) {
+    @Published var postDetailSelected: Post!
+    @Published var detailVisible: Bool
+    init(segmentControlOptions: [SegmentControlOption], selectedOption: SegmentControlOption, posts: [Post], errorMessage: String?, presentingError: Bool, loadingRequest: Bool, postDetailSelected: Post?, detailVisible: Bool) {
         self.segmentControlOptions = segmentControlOptions
         self.selectedOption = selectedOption
         self.posts = posts
         self.errorMessage = errorMessage
         self.presentingError = presentingError
         self.loadingRequest = loadingRequest
+        self.postDetailSelected = postDetailSelected
+        self.detailVisible = detailVisible
     }
 }

@@ -17,6 +17,7 @@ struct LocalizedKey {
         static let deleteAll = "main.deleteall"
         static let emptyPosts = "main.emptyposts"
         static let loading = "main.loading"
+        static let back = "main.back"
     }
     struct Detail {
         static let post = "detail.post"

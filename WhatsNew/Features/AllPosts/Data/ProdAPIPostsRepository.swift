@@ -19,6 +19,10 @@ class ProdAPIPostsRepository: APIPostsRepositoryType {
     let jsonDecoder = JSONDecoder()
     var dataTask: URLSessionDataTask?
     
+    private struct Constant {
+        static let numberOfNewPosts = 20
+    }
+    
     func fetchEntries(_ callback: @escaping (Result<[Post], FetchNewPostsError>) -> ()) {
         let url = getURL()
         dataTask?.cancel()
@@ -69,7 +73,8 @@ class ProdAPIPostsRepository: APIPostsRepositoryType {
         return Post(
             id: apiPost.id,
             description: apiPost.title,
-            visited: false,
-            favorite: false)
+            visited: apiPost.id > Constant.numberOfNewPosts,
+            favorite: false,
+            fetchDate: Date())
     }
 }
