@@ -8,8 +8,9 @@
 import Foundation
 
 class DevDBPostsRepository: DBPostsRepositoryType {
-    func fetchEntries(_ callback: @escaping (Result<[Post], FetchNewPostsError>) -> ()) {
-        var posts = [Post]()
+    var posts: [Post]
+    init() {
+        posts = [Post]()
         for i in (0..<3) {
             posts.append(
                 Post(
@@ -19,6 +20,20 @@ class DevDBPostsRepository: DBPostsRepositoryType {
                     favorite: false)
             )
         }
+    }
+    
+    func fetchEntries(_ callback: @escaping (Result<[Post], FetchNewPostsError>) -> ()) {
         callback(.success(posts))
+    }
+    func storePostsWithoutOverride(items: [Post]) {
+        items.forEach { (newPost) in
+            if posts.contains(where: { (oldPost) -> Bool in
+                oldPost.id == newPost.id
+            }) {
+                // If the entry already exists, do not override
+            } else {
+                posts.append(newPost)
+            }
+        }
     }
 }

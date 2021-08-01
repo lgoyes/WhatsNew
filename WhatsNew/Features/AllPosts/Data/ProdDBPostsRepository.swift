@@ -33,8 +33,37 @@ class ProdDBPostsRepository: DBPostsRepositoryType {
     func map(dbPost: DBPost) -> Post {
         return Post(
             id: Int(dbPost.id),
-            description: dbPost.description,
-            visited: false,
+            description: dbPost.title ?? "",
+            visited: dbPost.visited,
             favorite: dbPost.favorite)
+    }
+    
+    func storePostsWithoutOverride(items: [Post]) {
+        guard let context = context else {
+            return
+        }
+        
+        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = DBPost.fetchRequest()
+        items.forEach { domainPost in
+            let id = Int32(domainPost.id)
+            fetchRequest.predicate = NSPredicate(format: "id = %i", id)
+            if let fetchResult = try? context.fetch(fetchRequest) as? [DBPost],
+               fetchResult.count > 0 {
+                // If the entry already exists, do not override
+                
+            } else {
+                let dbPost = DBPost(context: context)
+                dbPost.id = Int32(domainPost.id)
+                dbPost.title = domainPost.description
+                dbPost.visited = domainPost.visited
+                dbPost.favorite = domainPost.favorite
+            }
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
     }
 }

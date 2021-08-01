@@ -53,11 +53,15 @@ class FetchNewPostsInteractor: FetchNewPostsInteractable {
         apiRepository.fetchEntries { [weak self] (apiRepositoryResult) in
             switch apiRepositoryResult {
             case .success(let newPosts):
+                self?.cacheNewEntries(domainPosts: newPosts)
                 self?.callback?(.success(newPosts))
             case .failure(let error):
                 self?.callback?(.failure(error))
             }
             self?.callback = nil
         }
+    }
+    func cacheNewEntries(domainPosts: [Post]) {
+        dbRepository.storePostsWithoutOverride(items: domainPosts)
     }
 }

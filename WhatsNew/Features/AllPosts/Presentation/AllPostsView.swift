@@ -24,7 +24,6 @@ struct AllPostsView: View {
                             selectedOption: $state.selectedOption,
                             options: state.segmentControlOptions)
                         
-                        
                         let visiblePosts = state.selectedOption == .all ? state.posts : state.posts.filter({ $0.favorite })
                         PostList(posts: visiblePosts) { (post) in
                             entity?.onRowSelected(post: post)
