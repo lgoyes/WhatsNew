@@ -14,14 +14,14 @@ protocol AllPostsEntityProtocol: AnyObject {
     func onViewAppeared()
     func onRowSelected(post: Post) -> ()
     func onErrorDialogAction()
-    func onDetailViewBackPressed()
+    func onDetailViewBackPressed(updatedPost: Post)
 }
 
 class AllPostsEntity {
     var state: AllPostsState
     let fetchNewPostsInteractor: FetchNewPostsInteractable
     let clearCacheInteractor: ClearCacheInteractable
-    let updateVisitedPostInteractor: SetVisitedPostInteractable
+    let setVisitedPostInteractor: SetVisitedPostInteractable
     
     init(state: AllPostsState = AllPostsState(
         segmentControlOptions: SegmentControlOption.allCases,
@@ -52,7 +52,7 @@ class AllPostsEntity {
             dbRepository: dbRepository)
         self.clearCacheInteractor = ClearCacheInteractor(
             dbRepository: dbRepository)
-        self.updateVisitedPostInteractor = SetVisitedPostInteractor(
+        self.setVisitedPostInteractor = SetVisitedPostInteractor(
             dbRepository: dbRepository)
     }
     
@@ -97,17 +97,14 @@ extension AllPostsEntity: AllPostsEntityProtocol {
     }
     
     func onRowSelected(post: Post) {
-        updateVisitedPostInteractor.setParams(postId: post.id)
-        updateVisitedPostInteractor.set { [weak self] (updatePostResponse) in
+        setVisitedPostInteractor.setParams(postId: post.id)
+        setVisitedPostInteractor.set { [weak self] (updatePostResponse) in
             guard let self = self else { return }
             
             switch updatePostResponse {
             case .success(let updatedPost):
-                // I'm force unwrapping this post, as it must exist
-                let updatedPostIndex = self.state.posts.firstIndex { $0.id == post.id }!
-                self.state.posts[updatedPostIndex] = updatedPost
-                
-                self.state.postDetailSelected = post
+                self.updatePost(updatedPost)
+                self.state.postDetailSelected = updatedPost
                 self.state.detailVisible = true
                 self.state.presentingError = false
                 self.state.errorMessage = nil
@@ -117,15 +114,22 @@ extension AllPostsEntity: AllPostsEntityProtocol {
                 self.state.errorMessage = "Database error"
             }
         }
-        updateVisitedPostInteractor.execute()
+        setVisitedPostInteractor.execute()
     }
     
     func onErrorDialogAction() {
         self.state.errorMessage = nil
     }
     
-    func onDetailViewBackPressed() {
+    func onDetailViewBackPressed(updatedPost: Post) {
+        updatePost(updatedPost)
         self.state.postDetailSelected = nil
         self.state.detailVisible = false
+    }
+    
+    func updatePost(_ updatedPost: Post) {
+        if let updatedPostIndex = self.state.posts.firstIndex(where: { $0.id == updatedPost.id }) {
+            self.state.posts[updatedPostIndex] = updatedPost
+        }
     }
 }

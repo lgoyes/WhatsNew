@@ -8,23 +8,51 @@
 import SwiftUI
 
 struct PostDetailView: View {
-    let onCloseDetailTapped: () -> ()
-    var post: Post!
+    let onCloseDetailTapped: (Post) -> ()
+    
+    @EnvironmentObject private var state: PostDetailState
+    
+    private var entity: PostDetailEntityProtocol?
+    
+    init(entity: PostDetailEntityProtocol?, onCloseDetailTapped: @escaping (Post) -> ()) {
+        self.entity = entity
+        self.onCloseDetailTapped = onCloseDetailTapped
+    }
     
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            if let post = state.post {
+                Text(post.description)
+            }
+        }
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton(label: NSLocalizedString(LocalizedKey.Main.back, comment: "")) {
-                self.onCloseDetailTapped()
+                if let updatedPost = self.state.post {
+                    self.onCloseDetailTapped(updatedPost)
+                }
+            }, trailing: Button(action: {
+                entity?.onFavoriteTapped()
+            }) {
+                if let post = self.state.post {
+                    if post.favorite {
+                        Image(systemName: "star.fill")
+                    } else {
+                        Image(systemName: "star")
+                    }
+                } else {
+                    EmptyView()
+                }
             })
             .onAppear() {
-                
+                entity?.onViewAppeared()
             }.navigationBarTitle(NSLocalizedString(LocalizedKey.Detail.post, comment: ""), displayMode: .inline)
     }
 }
 
 struct PostDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PostDetailView(onCloseDetailTapped: {}, post: nil)
+        let entity = PostDetailEntity(post: nil, context: PersistenceController.preview.container.viewContext)
+        PostDetailView(entity: entity, onCloseDetailTapped: {_ in })
+            .environmentObject(entity.state)
     }
 }

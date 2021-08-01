@@ -39,8 +39,9 @@ struct PostList: View {
     var body: some View {
         if posts.count > 0 {
             List(posts.sorted(by: {
-                (!$0.visited && $1.visited) ||
-                    (((!$0.visited && !$1.visited) || ($0.visited && $1.visited)) && $0.fetchDate > $1.fetchDate)
+                ($0.favorite && !$1.favorite) ||
+                    (!$0.favorite && !$1.favorite) && ((!$0.visited && $1.visited) ||
+                                                        (((!$0.visited && !$1.visited) || ($0.visited && $1.visited)) && $0.fetchDate > $1.fetchDate))
             })) { post in
                 PostRow(
                     visited: post.visited,

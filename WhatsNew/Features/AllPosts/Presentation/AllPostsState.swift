@@ -20,14 +20,6 @@ enum SegmentControlOption: CaseIterable {
     }
 }
 
-struct Post: Identifiable {
-    let id: Int
-    let description: String
-    let visited: Bool
-    let favorite: Bool
-    let fetchDate: Date
-}
-
 class AllPostsState: ObservableObject {
     @Published var posts: [Post]
     @Published var segmentControlOptions: [SegmentControlOption]

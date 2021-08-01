@@ -20,6 +20,11 @@
 		0C839D6826B57A9900D643F9 /* DevDBPostsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D6726B57A9900D643F9 /* DevDBPostsRepository.swift */; };
 		0C839D6D26B57AE600D643F9 /* APIPostsRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D6C26B57AE600D643F9 /* APIPostsRepositoryType.swift */; };
 		0C839D7226B57AF100D643F9 /* DBPostsRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D7126B57AF100D643F9 /* DBPostsRepositoryType.swift */; };
+		0C89CB1A26B75B5900EC22D5 /* PostDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB1926B75B5900EC22D5 /* PostDetailEntity.swift */; };
+		0C89CB2226B75B6400EC22D5 /* PostDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB2126B75B6400EC22D5 /* PostDetailState.swift */; };
+		0C89CB2826B75B7700EC22D5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB2726B75B7700EC22D5 /* Post.swift */; };
+		0C89CB2D26B75BDD00EC22D5 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB2C26B75BDD00EC22D5 /* Comment.swift */; };
+		0C89CB3226B75BF300EC22D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB3126B75BF300EC22D5 /* User.swift */; };
 		0C9D558C26B4F74900341E38 /* WhatsNewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D558B26B4F74900341E38 /* WhatsNewApp.swift */; };
 		0C9D558E26B4F74900341E38 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D558D26B4F74900341E38 /* MainContentView.swift */; };
 		0C9D559026B4F74A00341E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9D558F26B4F74A00341E38 /* Assets.xcassets */; };
@@ -68,6 +73,11 @@
 		0C839D6726B57A9900D643F9 /* DevDBPostsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevDBPostsRepository.swift; sourceTree = "<group>"; };
 		0C839D6C26B57AE600D643F9 /* APIPostsRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPostsRepositoryType.swift; sourceTree = "<group>"; };
 		0C839D7126B57AF100D643F9 /* DBPostsRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBPostsRepositoryType.swift; sourceTree = "<group>"; };
+		0C89CB1926B75B5900EC22D5 /* PostDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailEntity.swift; sourceTree = "<group>"; };
+		0C89CB2126B75B6400EC22D5 /* PostDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailState.swift; sourceTree = "<group>"; };
+		0C89CB2726B75B7700EC22D5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		0C89CB2C26B75BDD00EC22D5 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		0C89CB3126B75BF300EC22D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0C9D558826B4F74900341E38 /* WhatsNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9D558B26B4F74900341E38 /* WhatsNewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewApp.swift; sourceTree = "<group>"; };
 		0C9D558D26B4F74900341E38 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
@@ -139,6 +149,8 @@
 		0C5859E326B4FCB0005EEA47 /* PostDetail */ = {
 			isa = PBXGroup;
 			children = (
+				0C89CB1826B75B2200EC22D5 /* Data */,
+				0C89CB1726B75B1E00EC22D5 /* Domain */,
 				0C5859F826B4FD11005EEA47 /* Presentation */,
 			);
 			path = PostDetail;
@@ -170,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				0C5859F926B4FD23005EEA47 /* PostDetailView.swift */,
+				0C89CB1926B75B5900EC22D5 /* PostDetailEntity.swift */,
+				0C89CB2126B75B6400EC22D5 /* PostDetailState.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -182,7 +196,6 @@
 				0C839D6C26B57AE600D643F9 /* APIPostsRepositoryType.swift */,
 				0C839D7126B57AF100D643F9 /* DBPostsRepositoryType.swift */,
 				0C37292826B70B58009250AA /* SetVisitedPostInteractor.swift */,
-				0CC1877126B722400007E187 /* ToggleFavoritePostInteractor.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -196,6 +209,31 @@
 				0C839D6726B57A9900D643F9 /* DevDBPostsRepository.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		0C89CB1726B75B1E00EC22D5 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0CC1877126B722400007E187 /* ToggleFavoritePostInteractor.swift */,
+				0C89CB2C26B75BDD00EC22D5 /* Comment.swift */,
+				0C89CB3126B75BF300EC22D5 /* User.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		0C89CB1826B75B2200EC22D5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0C89CB2626B75B6E00EC22D5 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0C89CB2726B75B7700EC22D5 /* Post.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		0C9D557F26B4F74900341E38 = {
@@ -261,6 +299,7 @@
 		0CD604C826B501910056C0CE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0C89CB2626B75B6E00EC22D5 /* Domain */,
 				0CD604C926B501940056C0CE /* Presentation */,
 			);
 			path = Common;
@@ -423,21 +462,26 @@
 				0C37292126B70539009250AA /* ClearCacheInteractor.swift in Sources */,
 				0C01917D26B6FFB8005DB94C /* BackButton.swift in Sources */,
 				0C839D6826B57A9900D643F9 /* DevDBPostsRepository.swift in Sources */,
+				0C89CB1A26B75B5900EC22D5 /* PostDetailEntity.swift in Sources */,
 				0C9D559826B4F74A00341E38 /* WhatsNew.xcdatamodeld in Sources */,
 				0C5859FA26B4FD23005EEA47 /* PostDetailView.swift in Sources */,
 				0C5859F126B4FCFF005EEA47 /* AllPostsView.swift in Sources */,
+				0C89CB2226B75B6400EC22D5 /* PostDetailState.swift in Sources */,
 				0C839D5E26B57A7B00D643F9 /* DevAPIPostRepository.swift in Sources */,
 				0C839D6D26B57AE600D643F9 /* APIPostsRepositoryType.swift in Sources */,
 				0C9D558C26B4F74900341E38 /* WhatsNewApp.swift in Sources */,
 				0C839D5326B57A2900D643F9 /* FetchNewPostsInteractor.swift in Sources */,
 				0CC1877226B722400007E187 /* ToggleFavoritePostInteractor.swift in Sources */,
+				0C89CB2826B75B7700EC22D5 /* Post.swift in Sources */,
 				0C37292926B70B58009250AA /* SetVisitedPostInteractor.swift in Sources */,
 				0C839D6326B57A8D00D643F9 /* ProdDBPostsRepository.swift in Sources */,
+				0C89CB3226B75BF300EC22D5 /* User.swift in Sources */,
 				0C839D5926B57A6D00D643F9 /* ProdAPIPostsRepository.swift in Sources */,
 				0CD604CB26B501A00056C0CE /* BindingSegmentedControl.swift in Sources */,
 				0CD604EA26B50CF40056C0CE /* LocalizedKey.swift in Sources */,
 				0CD604FF26B5131D0056C0CE /* AllPostsState.swift in Sources */,
 				0CDD991A26B51EDA00362E5F /* PostList.swift in Sources */,
+				0C89CB2D26B75BDD00EC22D5 /* Comment.swift in Sources */,
 				0C839D7226B57AF100D643F9 /* DBPostsRepositoryType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

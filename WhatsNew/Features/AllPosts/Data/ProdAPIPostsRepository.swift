@@ -20,7 +20,7 @@ class ProdAPIPostsRepository: APIPostsRepositoryType {
     var dataTask: URLSessionDataTask?
     
     private struct Constant {
-        static let numberOfNewPosts = 20
+        static let numberOfNewPosts = 5
     }
     
     func fetchEntries(_ callback: @escaping (Result<[Post], FetchNewPostsError>) -> ()) {
