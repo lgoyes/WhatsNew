@@ -17,35 +17,69 @@ struct AllPostsView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                BindingSegmentedControl(
-                    selectedOption: $state.selectedOption,
-                    options: state.segmentControlOptions)
-                
-                let visiblePosts = state.selectedOption == .all ? state.posts : state.posts.filter({ $0.favorite }) 
-                PostList(posts: visiblePosts) { (post) in
-                    entity?.onRowSelected(post: post)
-                }
-                
-                Button(NSLocalizedString(LocalizedKey.Main.deleteAll, comment: "")) {
-                    entity?.onDeleteAllButtonTapped()
-                }
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .center)
-                .background(Color.red)
-            }.onAppear() {
-                entity?.onViewAppeared()
-            }.navigationBarTitle(NSLocalizedString(LocalizedKey.Main.posts, comment: ""), displayMode: .inline)
-            .toolbar(content: {
-                ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-                    Button(action: {
-                        entity?.onRefreshButtonTapped()
-                    }) {
-                        Image(systemName: "gobackward")
+            GeometryReader { geometry in
+                VStack {
+                    if !state.loadingRequest {
+                        BindingSegmentedControl(
+                            selectedOption: $state.selectedOption,
+                            options: state.segmentControlOptions)
+                        
+                        
+                        let visiblePosts = state.selectedOption == .all ? state.posts : state.posts.filter({ $0.favorite })
+                        PostList(posts: visiblePosts) { (post) in
+                            entity?.onRowSelected(post: post)
+                        }
+                        
+                        if state.posts.count > 0 {
+                            Button(NSLocalizedString(LocalizedKey.Main.deleteAll, comment: "")) {
+                                entity?.onDeleteAllButtonTapped()
+                            }
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .background(Color.red)
+                        }
+                    } else {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            VStack {
+                                Text(NSLocalizedString(LocalizedKey.Main.loading, comment: ""))
+                                ActivityIndicator(isAnimating: .constant(true), style: .large)
+                            }
+                                .frame(width: geometry.size.width / 2,
+                                        height: geometry.size.height / 5)
+                                .background(Color.secondary.colorInvert())
+                                .foregroundColor(Color.primary)
+                                .cornerRadius(20)
+                            Spacer()
+                        }
+                        Spacer()
                     }
-                }
-            })
+                }.onAppear() {
+                    entity?.onViewAppeared()
+                }.navigationBarTitle(NSLocalizedString(LocalizedKey.Main.posts, comment: ""), displayMode: .inline)
+                .toolbar(content: {
+                    ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+                        if !state.loadingRequest {
+                            Button(action: {
+                                entity?.onRefreshButtonTapped()
+                            }) {
+                                Image(systemName: "gobackward")
+                            }
+                        }
+                    }
+                })
+                .alert(isPresented: $state.presentingError, content: {
+                    Alert(
+                        title: Text(NSLocalizedString(LocalizedKey.Error.title, comment: "")),
+                        message: Text(state.errorMessage ?? ""),
+                        dismissButton: .default(Text(NSLocalizedString(LocalizedKey.Error.action, comment: "")), action: {
+                            entity?.onErrorDialogAction()
+                        })
+                    )
+                })
+            }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
@@ -67,7 +101,11 @@ struct AllPostsView_Previews: PreviewProvider {
                 Post(id: 9, description: "hola", visited: true, favorite: true),
                 Post(id: 10, description: "hola", visited: true, favorite: false),
                 Post(id: 11, description: "hola", visited: true, favorite: true),
-            ])
+            ],
+            errorMessage: nil,
+            presentingError: false,
+            loadingRequest: false
+        )
         let entity = AllPostsEntity(state: state)
         AllPostsView(entity: entity)
             .environmentObject(entity.state)

@@ -31,9 +31,15 @@ class AllPostsState: ObservableObject {
     @Published var posts: [Post]
     @Published var segmentControlOptions: [SegmentControlOption]
     @Published var selectedOption: SegmentControlOption
-    init(segmentControlOptions: [SegmentControlOption], selectedOption: SegmentControlOption, posts: [Post]) {
+    @Published var errorMessage: String?
+    @Published var presentingError: Bool
+    @Published var loadingRequest: Bool
+    init(segmentControlOptions: [SegmentControlOption], selectedOption: SegmentControlOption, posts: [Post], errorMessage: String?, presentingError: Bool, loadingRequest: Bool) {
         self.segmentControlOptions = segmentControlOptions
         self.selectedOption = selectedOption
         self.posts = posts
+        self.errorMessage = errorMessage
+        self.presentingError = presentingError
+        self.loadingRequest = loadingRequest
     }
 }

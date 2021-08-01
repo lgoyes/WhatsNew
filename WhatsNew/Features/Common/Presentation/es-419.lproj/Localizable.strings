@@ -14,3 +14,7 @@
 "detail.description" = "Descripción";
 "detail.user" = "Usuario";
 "detail.comments" = "Comentarios";
+"error.default" = "¡Tenemos problemas en el servidor!\nIntenta más tarde";
+"error.action" = "Cerrar";
+"error.title" = "Error";
+"main.loading" = "Cargando";

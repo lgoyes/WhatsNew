@@ -8,7 +8,9 @@
 import Foundation
 
 enum FetchNewPostsError: Swift.Error {
-    
+    case requestError
+    case unexpectedResponse
+    case databaseError
 }
 
 protocol FetchNewPostsInteractable {
@@ -33,6 +35,21 @@ class FetchNewPostsInteractor: FetchNewPostsInteractable {
         self.callback = callback
     }
     func execute() {
+        loadCachedEntries()
+    }
+    func loadCachedEntries() {
+        dbRepository.fetchEntries { [weak self] (dbRepositoryResult) in
+            switch dbRepositoryResult {
+            case .success(let cachedPosts):
+                self?.callback?(.success(cachedPosts))
+                self?.fetchNewEntries()
+            case .failure(let error):
+                self?.callback?(.failure(error))
+                self?.callback = nil
+            }
+        }
+    }
+    func fetchNewEntries() {
         apiRepository.fetchEntries { [weak self] (apiRepositoryResult) in
             switch apiRepositoryResult {
             case .success(let newPosts):

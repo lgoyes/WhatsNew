@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C01917526B6E986005DB94C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C01917426B6E986005DB94C /* ActivityIndicator.swift */; };
 		0C5859F126B4FCFF005EEA47 /* AllPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5859F026B4FCFF005EEA47 /* AllPostsView.swift */; };
 		0C5859FA26B4FD23005EEA47 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5859F926B4FD23005EEA47 /* PostDetailView.swift */; };
 		0C839D5326B57A2900D643F9 /* FetchNewPostsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C839D5226B57A2900D643F9 /* FetchNewPostsInteractor.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C01917426B6E986005DB94C /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		0C5859F026B4FCFF005EEA47 /* AllPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostsView.swift; sourceTree = "<group>"; };
 		0C5859F926B4FD23005EEA47 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		0C839D5226B57A2900D643F9 /* FetchNewPostsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNewPostsInteractor.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			children = (
 				0CD604E126B50CAA0056C0CE /* Localizable.strings */,
 				0CD604E926B50CF40056C0CE /* LocalizedKey.swift */,
+				0C01917426B6E986005DB94C /* ActivityIndicator.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			files = (
 				0C9D559526B4F74A00341E38 /* Persistence.swift in Sources */,
 				0C9D558E26B4F74900341E38 /* MainContentView.swift in Sources */,
+				0C01917526B6E986005DB94C /* ActivityIndicator.swift in Sources */,
 				0CD604FA26B513110056C0CE /* AllPostsEntity.swift in Sources */,
 				0C839D6826B57A9900D643F9 /* DevDBPostsRepository.swift in Sources */,
 				0C9D559826B4F74A00341E38 /* WhatsNew.xcdatamodeld in Sources */,

@@ -14,3 +14,7 @@
 "detail.description" = "Description";
 "detail.user" = "User";
 "detail.comments" = "Comments";
+"error.default" = "There's a server error.\nTry again later";
+"error.action" = "Close";
+"error.title" = "Error";
+"main.loading" = "Loading";

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DBPostsRepositoryType: AnyObject {
-    
+    func fetchEntries(_ callback: @escaping (Result<[Post], FetchNewPostsError>) -> ())
 }

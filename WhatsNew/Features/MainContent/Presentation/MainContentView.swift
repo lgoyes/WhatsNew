@@ -9,8 +9,9 @@ import SwiftUI
 import CoreData
 
 struct MainContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     var body: some View {        
-        let entity = AllPostsEntity()
+        let entity = AllPostsEntity(context: viewContext)
         AllPostsView(entity: entity)
             .environmentObject(entity.state)
     }
