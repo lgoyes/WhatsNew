@@ -16,9 +16,11 @@ class DevDBPostsRepository: DBPostsRepositoryType {
                 Post(
                     id: i,
                     description: "Cached Description \(i)",
+                    body: "Cached Body \(i)",
                     visited: false,
                     favorite: false,
-                    fetchDate: Date())
+                    fetchDate: Date(),
+                    userId: 1)
             )
         }
     }

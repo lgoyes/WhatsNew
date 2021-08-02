@@ -34,9 +34,11 @@ class ProdDBPostsRepository: DBPostsRepositoryType {
         return Post(
             id: Int(dbPost.id),
             description: dbPost.title ?? "",
+            body: dbPost.body ?? "",
             visited: dbPost.visited,
             favorite: dbPost.favorite,
-            fetchDate: dbPost.fetchDate ?? Date())
+            fetchDate: dbPost.fetchDate ?? Date(),
+            userId: Int(dbPost.userId))
     }
     
     func storePostsWithoutOverride(items: [Post]) {
@@ -55,6 +57,8 @@ class ProdDBPostsRepository: DBPostsRepositoryType {
                 dbPost.title = domainPost.description
                 dbPost.visited = domainPost.visited
                 dbPost.favorite = domainPost.favorite
+                dbPost.body = domainPost.body
+                dbPost.userId = Int32(domainPost.userId)
             }
         }
         

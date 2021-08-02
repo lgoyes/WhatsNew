@@ -73,8 +73,10 @@ class ProdAPIPostsRepository: APIPostsRepositoryType {
         return Post(
             id: apiPost.id,
             description: apiPost.title,
+            body: apiPost.body,
             visited: apiPost.id > Constant.numberOfNewPosts,
             favorite: false,
-            fetchDate: Date())
+            fetchDate: Date(),
+            userId: apiPost.userId)
     }
 }

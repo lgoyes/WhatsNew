@@ -20,32 +20,62 @@ struct PostDetailView: View {
     }
     
     var body: some View {
-        VStack {
+        ZStack {
             if let post = state.post {
-                Text(post.description)
+                GeometryReader { geometry in
+                    VStack {
+                        Text(NSLocalizedString(LocalizedKey.Detail.description, comment: ""))
+                            .font(.system(size: 20, weight: .semibold, design: .default))
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                        Text(post.body)
+                        
+                        Spacer().frame(height: 50)
+                        
+                        Text(NSLocalizedString(LocalizedKey.Detail.user, comment: ""))
+                            .font(.system(size: 20, weight: .semibold, design: .default))
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                        
+                        Spacer().frame(height: 50)
+                        
+                        Text(NSLocalizedString(LocalizedKey.Detail.comments, comment: ""))
+                            .font(.system(size: 20, weight: .semibold, design: .default))
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .foregroundColor(Color.white)
+                            .background(Color.gray)
+                    }.frame(maxWidth: .infinity)
+                }.alert(isPresented: $state.presentingError, content: {
+                    Alert(
+                        title: Text(NSLocalizedString(LocalizedKey.Error.title, comment: "")),
+                        message: Text(state.errorMessage ?? ""),
+                        dismissButton: .default(Text(NSLocalizedString(LocalizedKey.Error.action, comment: "")), action: {
+                            entity?.onErrorDialogAction()
+                        })
+                    )
+                }).padding()
             }
         }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: BackButton(label: NSLocalizedString(LocalizedKey.Main.back, comment: "")) {
-                if let updatedPost = self.state.post {
-                    self.onCloseDetailTapped(updatedPost)
-                }
-            }, trailing: Button(action: {
-                entity?.onFavoriteTapped()
-            }) {
-                if let post = self.state.post {
-                    if post.favorite {
-                        Image(systemName: "star.fill")
-                    } else {
-                        Image(systemName: "star")
-                    }
+        .frame(maxWidth: .infinity)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: BackButton(label: NSLocalizedString(LocalizedKey.Main.back, comment: "")) {
+            if let updatedPost = self.state.post {
+                self.onCloseDetailTapped(updatedPost)
+            }
+        }, trailing: Button(action: {
+            entity?.onFavoriteTapped()
+        }) {
+            if let post = self.state.post {
+                if post.favorite {
+                    Image(systemName: "star.fill")
                 } else {
-                    EmptyView()
+                    Image(systemName: "star")
                 }
-            })
-            .onAppear() {
-                entity?.onViewAppeared()
-            }.navigationBarTitle(NSLocalizedString(LocalizedKey.Detail.post, comment: ""), displayMode: .inline)
+            } else {
+                EmptyView()
+            }
+        })
+        .onAppear() {
+            entity?.onViewAppeared()
+        }.navigationBarTitle(NSLocalizedString(LocalizedKey.Detail.post, comment: ""), displayMode: .inline)
     }
 }
 

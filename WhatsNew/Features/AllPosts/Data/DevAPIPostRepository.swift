@@ -19,9 +19,11 @@ class DevAPIPostRepository: APIPostsRepositoryType {
                 Post(
                     id: i,
                     description: "Description \(i)",
+                    body: "Body: \(i)",
                     visited: i >= Constant.numberOfNewPosts,
                     favorite: false,
-                    fetchDate: Date())
+                    fetchDate: Date(),
+                    userId: 1)
             )
         }
         callback(.success(posts))

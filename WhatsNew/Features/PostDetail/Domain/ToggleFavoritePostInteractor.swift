@@ -53,9 +53,11 @@ class ToggleFavoritePostInteractor: ToggleFavoritePostInteractable {
             let visitedPost = Post(
                 id: oldPost.id,
                 description: oldPost.description,
+                body: oldPost.body,
                 visited: oldPost.visited,
                 favorite: !oldPost.favorite,
-                fetchDate: Date())
+                fetchDate: Date(),
+                userId: oldPost.userId)
             
             self.dbRepository.updatePost(postId: postId, post: visitedPost) { (updatedPost) in
                 if let updatedPost = updatedPost {
