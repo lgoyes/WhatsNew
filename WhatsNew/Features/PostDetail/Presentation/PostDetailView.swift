@@ -29,13 +29,13 @@ struct PostDetailView: View {
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         Text(post.body)
                         
-                        Spacer().frame(height: 50)
+                        Spacer().frame(height: 25)
                         
                         Text(NSLocalizedString(LocalizedKey.Detail.user, comment: ""))
                             .font(.system(size: 20, weight: .semibold, design: .default))
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         
-                        Spacer().frame(height: 50)
+                        Spacer().frame(height: 25)
                         
                         Text(NSLocalizedString(LocalizedKey.Detail.comments, comment: ""))
                             .font(.system(size: 20, weight: .semibold, design: .default))
@@ -51,7 +51,7 @@ struct PostDetailView: View {
                             entity?.onErrorDialogAction()
                         })
                     )
-                }).padding()
+                })
             }
         }
         .frame(maxWidth: .infinity)
