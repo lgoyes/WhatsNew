@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0C01917526B6E986005DB94C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C01917426B6E986005DB94C /* ActivityIndicator.swift */; };
 		0C01917D26B6FFB8005DB94C /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C01917C26B6FFB8005DB94C /* BackButton.swift */; };
+		0C27B41826B796200062778F /* ProdAPICommentsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27B41726B796200062778F /* ProdAPICommentsRepository.swift */; };
+		0C27B41D26B797170062778F /* FetchCommentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C27B41C26B797170062778F /* FetchCommentsInteractor.swift */; };
 		0C37292126B70539009250AA /* ClearCacheInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C37292026B70539009250AA /* ClearCacheInteractor.swift */; };
 		0C37292926B70B58009250AA /* SetVisitedPostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C37292826B70B58009250AA /* SetVisitedPostInteractor.swift */; };
 		0C5859F126B4FCFF005EEA47 /* AllPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5859F026B4FCFF005EEA47 /* AllPostsView.swift */; };
@@ -38,6 +40,8 @@
 		0C9D55A326B4F74A00341E38 /* WhatsNewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D55A226B4F74A00341E38 /* WhatsNewTests.swift */; };
 		0C9D55AE26B4F74A00341E38 /* WhatsNewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D55AD26B4F74A00341E38 /* WhatsNewUITests.swift */; };
 		0CC1877226B722400007E187 /* ToggleFavoritePostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC1877126B722400007E187 /* ToggleFavoritePostInteractor.swift */; };
+		0CC6BB1526B7956C00E4F397 /* APICommentsRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6BB1426B7956C00E4F397 /* APICommentsRepositoryType.swift */; };
+		0CC6BB1A26B7958C00E4F397 /* DevAPICommentsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6BB1926B7958C00E4F397 /* DevAPICommentsRepository.swift */; };
 		0CD604CB26B501A00056C0CE /* BindingSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD604CA26B501A00056C0CE /* BindingSegmentedControl.swift */; };
 		0CD604DF26B50CAA0056C0CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0CD604E126B50CAA0056C0CE /* Localizable.strings */; };
 		0CD604EA26B50CF40056C0CE /* LocalizedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD604E926B50CF40056C0CE /* LocalizedKey.swift */; };
@@ -66,6 +70,8 @@
 /* Begin PBXFileReference section */
 		0C01917426B6E986005DB94C /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		0C01917C26B6FFB8005DB94C /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		0C27B41726B796200062778F /* ProdAPICommentsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdAPICommentsRepository.swift; sourceTree = "<group>"; };
+		0C27B41C26B797170062778F /* FetchCommentsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCommentsInteractor.swift; sourceTree = "<group>"; };
 		0C37292026B70539009250AA /* ClearCacheInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearCacheInteractor.swift; sourceTree = "<group>"; };
 		0C37292826B70B58009250AA /* SetVisitedPostInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVisitedPostInteractor.swift; sourceTree = "<group>"; };
 		0C5859F026B4FCFF005EEA47 /* AllPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostsView.swift; sourceTree = "<group>"; };
@@ -101,6 +107,8 @@
 		0C9D55AD26B4F74A00341E38 /* WhatsNewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewUITests.swift; sourceTree = "<group>"; };
 		0C9D55AF26B4F74A00341E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CC1877126B722400007E187 /* ToggleFavoritePostInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleFavoritePostInteractor.swift; sourceTree = "<group>"; };
+		0CC6BB1426B7956C00E4F397 /* APICommentsRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICommentsRepositoryType.swift; sourceTree = "<group>"; };
+		0CC6BB1926B7958C00E4F397 /* DevAPICommentsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevAPICommentsRepository.swift; sourceTree = "<group>"; };
 		0CD604CA26B501A00056C0CE /* BindingSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingSegmentedControl.swift; sourceTree = "<group>"; };
 		0CD604E026B50CAA0056C0CE /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0CD604E526B50CB10056C0CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -223,10 +231,12 @@
 			isa = PBXGroup;
 			children = (
 				0C89CB3926B7761500EC22D5 /* FetchUserInteractor.swift */,
+				0C27B41C26B797170062778F /* FetchCommentsInteractor.swift */,
 				0CC1877126B722400007E187 /* ToggleFavoritePostInteractor.swift */,
 				0C89CB2C26B75BDD00EC22D5 /* Comment.swift */,
 				0C89CB3126B75BF300EC22D5 /* User.swift */,
 				0C89CB4126B7769400EC22D5 /* APIUserRepositoryType.swift */,
+				0CC6BB1426B7956C00E4F397 /* APICommentsRepositoryType.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -236,6 +246,8 @@
 			children = (
 				0C89CB4626B7775600EC22D5 /* ProdAPIUserRepository.swift */,
 				0C89CB4B26B7775F00EC22D5 /* DevAPIUserRepository.swift */,
+				0CC6BB1926B7958C00E4F397 /* DevAPICommentsRepository.swift */,
+				0C27B41726B796200062778F /* ProdAPICommentsRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -470,12 +482,15 @@
 				0C9D559526B4F74A00341E38 /* Persistence.swift in Sources */,
 				0C9D558E26B4F74900341E38 /* MainContentView.swift in Sources */,
 				0C01917526B6E986005DB94C /* ActivityIndicator.swift in Sources */,
+				0CC6BB1A26B7958C00E4F397 /* DevAPICommentsRepository.swift in Sources */,
 				0CD604FA26B513110056C0CE /* AllPostsEntity.swift in Sources */,
 				0C37292126B70539009250AA /* ClearCacheInteractor.swift in Sources */,
 				0C89CB4226B7769400EC22D5 /* APIUserRepositoryType.swift in Sources */,
 				0C01917D26B6FFB8005DB94C /* BackButton.swift in Sources */,
+				0C27B41826B796200062778F /* ProdAPICommentsRepository.swift in Sources */,
 				0C839D6826B57A9900D643F9 /* DevDBPostsRepository.swift in Sources */,
 				0C89CB4726B7775600EC22D5 /* ProdAPIUserRepository.swift in Sources */,
+				0C27B41D26B797170062778F /* FetchCommentsInteractor.swift in Sources */,
 				0C89CB1A26B75B5900EC22D5 /* PostDetailEntity.swift in Sources */,
 				0C9D559826B4F74A00341E38 /* WhatsNew.xcdatamodeld in Sources */,
 				0C5859FA26B4FD23005EEA47 /* PostDetailView.swift in Sources */,
@@ -491,6 +506,7 @@
 				0C37292926B70B58009250AA /* SetVisitedPostInteractor.swift in Sources */,
 				0C839D6326B57A8D00D643F9 /* ProdDBPostsRepository.swift in Sources */,
 				0C89CB3226B75BF300EC22D5 /* User.swift in Sources */,
+				0CC6BB1526B7956C00E4F397 /* APICommentsRepositoryType.swift in Sources */,
 				0C839D5926B57A6D00D643F9 /* ProdAPIPostsRepository.swift in Sources */,
 				0CD604CB26B501A00056C0CE /* BindingSegmentedControl.swift in Sources */,
 				0CD604EA26B50CF40056C0CE /* LocalizedKey.swift in Sources */,

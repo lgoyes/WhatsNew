@@ -18,6 +18,7 @@ class PostDetailEntity {
     var state: PostDetailState
     let toggleFavoritePostInteractor: ToggleFavoritePostInteractable
     let fetchUserInteractor: FetchUserInteractable
+    let fetchCommentsInteractor: FetchCommentsInteractable
     
     init(post: Post? = nil, context: NSManagedObjectContext? = nil) {
         self.state = PostDetailState(
@@ -27,17 +28,21 @@ class PostDetailEntity {
             loadingRequest: false)
         
         var dbRepository: DBPostsRepositoryType!
-        var apiRepository: APIUserRepositoryType!
+        var userApiRepository: APIUserRepositoryType!
+        var commentsApiRepository: APICommentsRepositoryType!
         #if DEBUG
         dbRepository = DevDBPostsRepository()
-        apiRepository = DevAPIUserRepository()
+        userApiRepository = DevAPIUserRepository()
+        commentsApiRepository = DevAPICommentsRepository()
         #else
         dbRepository = ProdDBPostsRepository(context: context)
-        apiRepository = ProdAPIUserRepository()
+        userApiRepository = ProdAPIUserRepository()
+        commentsApiRepository = ProdAPICommentsRepository()
         #endif
         
         self.toggleFavoritePostInteractor = ToggleFavoritePostInteractor(dbRepository: dbRepository)
-        self.fetchUserInteractor = FetchUserInteractor(apiRepository: apiRepository)
+        self.fetchUserInteractor = FetchUserInteractor(apiRepository: userApiRepository)
+        self.fetchCommentsInteractor = FetchCommentsInteractor(apiRepository: commentsApiRepository)
     }
     
     func fetchUser() {
@@ -60,12 +65,34 @@ class PostDetailEntity {
         }
         self.fetchUserInteractor.execute()
     }
+    
+    func fetchComments() {
+        guard let post = self.state.post else {
+            return
+        }
+        self.fetchCommentsInteractor.setParams(postId: post.id)
+        self.fetchCommentsInteractor.set { [weak self] (commentsResult) in
+            guard let self = self else { return }
+            switch commentsResult {
+            case .success(let comments):
+                self.state.comments = comments
+                self.state.errorMessage = nil
+                self.state.presentingError = false
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.state.errorMessage = NSLocalizedString(LocalizedKey.Error.default, comment: "")
+                self.state.presentingError = true
+            }
+        }
+        self.fetchCommentsInteractor.execute()
+    }
 }
 
 extension PostDetailEntity: PostDetailEntityProtocol {
     func onViewAppeared() {
         if self.state.user == nil {
             fetchUser()
+            fetchComments()
         }
     }
     

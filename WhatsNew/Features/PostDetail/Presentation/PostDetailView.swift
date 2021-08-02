@@ -40,7 +40,23 @@ struct PostDetailView: View {
                             Text(user.email).frame(maxWidth: .infinity, alignment: .topLeading)
                             Text(user.phone).frame(maxWidth: .infinity, alignment: .topLeading)
                             Text(user.website).frame(maxWidth: .infinity, alignment: .topLeading)
-                        } else {
+                        }
+                        
+                        if let comments = state.comments {
+                            Spacer().frame(height: 25)
+                            
+                            Text(NSLocalizedString(LocalizedKey.Detail.comments, comment: ""))
+                                .font(.system(size: 20, weight: .semibold, design: .default))
+                                .frame(maxWidth: .infinity, alignment: .topLeading)
+                                .foregroundColor(Color.white)
+                                .background(Color.gray)
+                            
+                            List(comments) { comment in
+                                Text(comment.body)
+                            }
+                        }
+                        
+                        if (state.comments == nil || state.user == nil) && !state.presentingError {
                             Spacer()
                             HStack {
                                 Spacer()
@@ -57,16 +73,6 @@ struct PostDetailView: View {
                             }
                             Spacer()
                         }
-                        
-//                        if let comments = state.comments {
-//                            Spacer().frame(height: 25)
-//                            
-//                            Text(NSLocalizedString(LocalizedKey.Detail.comments, comment: ""))
-//                                .font(.system(size: 20, weight: .semibold, design: .default))
-//                                .frame(maxWidth: .infinity, alignment: .topLeading)
-//                                .foregroundColor(Color.white)
-//                                .background(Color.gray)
-//                        }
                     }.frame(maxWidth: .infinity)
                 }.alert(isPresented: $state.presentingError, content: {
                     Alert(
