@@ -29,19 +29,44 @@ struct PostDetailView: View {
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                         Text(post.body)
                         
-                        Spacer().frame(height: 25)
+                        if let user = state.user {
+                            Spacer().frame(height: 25)
+                            
+                            Text(NSLocalizedString(LocalizedKey.Detail.user, comment: ""))
+                                .font(.system(size: 20, weight: .semibold, design: .default))
+                                .frame(maxWidth: .infinity, alignment: .topLeading)
+                            
+                            Text(user.name).frame(maxWidth: .infinity, alignment: .topLeading)
+                            Text(user.email).frame(maxWidth: .infinity, alignment: .topLeading)
+                            Text(user.phone).frame(maxWidth: .infinity, alignment: .topLeading)
+                            Text(user.website).frame(maxWidth: .infinity, alignment: .topLeading)
+                        } else {
+                            Spacer()
+                            HStack {
+                                Spacer()
+                                VStack {
+                                    Text(NSLocalizedString(LocalizedKey.Main.loading, comment: ""))
+                                    ActivityIndicator(isAnimating: .constant(true), style: .large)
+                                }
+                                    .frame(width: geometry.size.width / 2,
+                                            height: geometry.size.height / 5)
+                                    .background(Color.secondary.colorInvert())
+                                    .foregroundColor(Color.primary)
+                                    .cornerRadius(20)
+                                Spacer()
+                            }
+                            Spacer()
+                        }
                         
-                        Text(NSLocalizedString(LocalizedKey.Detail.user, comment: ""))
-                            .font(.system(size: 20, weight: .semibold, design: .default))
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                        
-                        Spacer().frame(height: 25)
-                        
-                        Text(NSLocalizedString(LocalizedKey.Detail.comments, comment: ""))
-                            .font(.system(size: 20, weight: .semibold, design: .default))
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                            .foregroundColor(Color.white)
-                            .background(Color.gray)
+//                        if let comments = state.comments {
+//                            Spacer().frame(height: 25)
+//                            
+//                            Text(NSLocalizedString(LocalizedKey.Detail.comments, comment: ""))
+//                                .font(.system(size: 20, weight: .semibold, design: .default))
+//                                .frame(maxWidth: .infinity, alignment: .topLeading)
+//                                .foregroundColor(Color.white)
+//                                .background(Color.gray)
+//                        }
                     }.frame(maxWidth: .infinity)
                 }.alert(isPresented: $state.presentingError, content: {
                     Alert(

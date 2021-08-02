@@ -25,6 +25,10 @@
 		0C89CB2826B75B7700EC22D5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB2726B75B7700EC22D5 /* Post.swift */; };
 		0C89CB2D26B75BDD00EC22D5 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB2C26B75BDD00EC22D5 /* Comment.swift */; };
 		0C89CB3226B75BF300EC22D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB3126B75BF300EC22D5 /* User.swift */; };
+		0C89CB3A26B7761500EC22D5 /* FetchUserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB3926B7761500EC22D5 /* FetchUserInteractor.swift */; };
+		0C89CB4226B7769400EC22D5 /* APIUserRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB4126B7769400EC22D5 /* APIUserRepositoryType.swift */; };
+		0C89CB4726B7775600EC22D5 /* ProdAPIUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB4626B7775600EC22D5 /* ProdAPIUserRepository.swift */; };
+		0C89CB4C26B7775F00EC22D5 /* DevAPIUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C89CB4B26B7775F00EC22D5 /* DevAPIUserRepository.swift */; };
 		0C9D558C26B4F74900341E38 /* WhatsNewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D558B26B4F74900341E38 /* WhatsNewApp.swift */; };
 		0C9D558E26B4F74900341E38 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9D558D26B4F74900341E38 /* MainContentView.swift */; };
 		0C9D559026B4F74A00341E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C9D558F26B4F74A00341E38 /* Assets.xcassets */; };
@@ -78,6 +82,10 @@
 		0C89CB2726B75B7700EC22D5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0C89CB2C26B75BDD00EC22D5 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0C89CB3126B75BF300EC22D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0C89CB3926B7761500EC22D5 /* FetchUserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserInteractor.swift; sourceTree = "<group>"; };
+		0C89CB4126B7769400EC22D5 /* APIUserRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserRepositoryType.swift; sourceTree = "<group>"; };
+		0C89CB4626B7775600EC22D5 /* ProdAPIUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdAPIUserRepository.swift; sourceTree = "<group>"; };
+		0C89CB4B26B7775F00EC22D5 /* DevAPIUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevAPIUserRepository.swift; sourceTree = "<group>"; };
 		0C9D558826B4F74900341E38 /* WhatsNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C9D558B26B4F74900341E38 /* WhatsNewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewApp.swift; sourceTree = "<group>"; };
 		0C9D558D26B4F74900341E38 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
@@ -214,9 +222,11 @@
 		0C89CB1726B75B1E00EC22D5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				0C89CB3926B7761500EC22D5 /* FetchUserInteractor.swift */,
 				0CC1877126B722400007E187 /* ToggleFavoritePostInteractor.swift */,
 				0C89CB2C26B75BDD00EC22D5 /* Comment.swift */,
 				0C89CB3126B75BF300EC22D5 /* User.swift */,
+				0C89CB4126B7769400EC22D5 /* APIUserRepositoryType.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -224,6 +234,8 @@
 		0C89CB1826B75B2200EC22D5 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0C89CB4626B7775600EC22D5 /* ProdAPIUserRepository.swift */,
+				0C89CB4B26B7775F00EC22D5 /* DevAPIUserRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -460,12 +472,15 @@
 				0C01917526B6E986005DB94C /* ActivityIndicator.swift in Sources */,
 				0CD604FA26B513110056C0CE /* AllPostsEntity.swift in Sources */,
 				0C37292126B70539009250AA /* ClearCacheInteractor.swift in Sources */,
+				0C89CB4226B7769400EC22D5 /* APIUserRepositoryType.swift in Sources */,
 				0C01917D26B6FFB8005DB94C /* BackButton.swift in Sources */,
 				0C839D6826B57A9900D643F9 /* DevDBPostsRepository.swift in Sources */,
+				0C89CB4726B7775600EC22D5 /* ProdAPIUserRepository.swift in Sources */,
 				0C89CB1A26B75B5900EC22D5 /* PostDetailEntity.swift in Sources */,
 				0C9D559826B4F74A00341E38 /* WhatsNew.xcdatamodeld in Sources */,
 				0C5859FA26B4FD23005EEA47 /* PostDetailView.swift in Sources */,
 				0C5859F126B4FCFF005EEA47 /* AllPostsView.swift in Sources */,
+				0C89CB4C26B7775F00EC22D5 /* DevAPIUserRepository.swift in Sources */,
 				0C89CB2226B75B6400EC22D5 /* PostDetailState.swift in Sources */,
 				0C839D5E26B57A7B00D643F9 /* DevAPIPostRepository.swift in Sources */,
 				0C839D6D26B57AE600D643F9 /* APIPostsRepositoryType.swift in Sources */,
@@ -482,6 +497,7 @@
 				0CD604FF26B5131D0056C0CE /* AllPostsState.swift in Sources */,
 				0CDD991A26B51EDA00362E5F /* PostList.swift in Sources */,
 				0C89CB2D26B75BDD00EC22D5 /* Comment.swift in Sources */,
+				0C89CB3A26B7761500EC22D5 /* FetchUserInteractor.swift in Sources */,
 				0C839D7226B57AF100D643F9 /* DBPostsRepositoryType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
